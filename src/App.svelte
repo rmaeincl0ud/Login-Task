@@ -20,6 +20,9 @@
 	let gender = ''
 	let signupEmail = ''
 	let signupPassword = ''
+	let confirmPassword = ''
+	let showSignupPassword = false
+	let showConfirmPassword = false
 	
 	function goToSignup() {
 		currentView = 'signup'
@@ -162,15 +165,41 @@
 		</div>
 		
 		<!-- Password -->
-		<div class="flex flex-col gap-1">
+		<div class="flex flex-col gap-1 relative">
 			<Label>Password</Label>
 			<Input
 				id="signupPassword"
-				type="password"
+				type={showSignupPassword ? 'text' : 'password'}
 				placeholder="Create a password"
 				bind:value={signupPassword}
-				class="text-lg"
+				class="text-lg pr-12"
 			/>
+			<button
+				type="button"
+				class="absolute right-2 top-2 transform -translate-y-1/2 text-sm font-semibold text-gray-500 hover:text-gray-700"
+				on:click={() => (showSignupPassword = !showSignupPassword)}
+			>
+				{showSignupPassword ? 'Hide' : 'Show'}
+			</button>
+		</div>
+		
+		<!-- Confirm Password -->
+		<div class="flex flex-col gap-1 relative">
+			<Label>Confirm Password</Label>
+			<Input
+				id="confirmPassword"
+				type={showConfirmPassword ? 'text' : 'password'}
+				placeholder="Confirm your password"
+				bind:value={confirmPassword}
+				class="text-lg pr-12"
+			/>
+			<button
+				type="button"
+				class="absolute right-2 top-2 transform -translate-y-1/2 text-sm font-semibold text-gray-500 hover:text-gray-700"
+				on:click={() => (showConfirmPassword = !showConfirmPassword)}
+			>
+				{showConfirmPassword ? 'Hide' : 'Show'}
+			</button>
 		</div>
 		
 		<Button type="submit" class="w-full bg-pink-300 border-2">Sign Up</Button>
