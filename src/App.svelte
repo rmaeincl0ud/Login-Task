@@ -10,7 +10,7 @@
 	let showPassword = false
 	
 	// Routing state
-	let currentView: 'login' | 'signup' | 'welcome' = 'login'
+	let currentView: 'login' | 'signup' = 'login'
 	
 	// Signup form state
 	let firstName = ''
@@ -31,17 +31,12 @@
 	function goToLogin() {
 		currentView = 'login'
 	}
-	
-	function handleLogin(e: Event) {
-		e.preventDefault()
-		currentView = 'welcome'
-	}
 </script>
 
 <div class="min-h-screen flex flex-col items-center justify-center bg-pink-50">
 	{#if currentView === 'login'}
 	<!-- Login Form -->
-	<form on:submit={handleLogin} class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
+	<form class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
                bg-pink-100 border-7 border-pink-300">
 		<h1 class="text-xl font-extrabold text-center text-pink-500 font[Times New Roman]">
   					Welcome to PinkyPal</h1> 			 	
@@ -87,7 +82,7 @@
 				Sign up</button>
 			</div>
 	</form>
-	{:else}
+	{:else if currentView === 'signup'}
 	<!-- Signup Form -->
 	<form class="p-8 rounded-xl shadow-lg w-100 flex flex-col gap-4
                bg-pink-100 border-7 border-pink-300">
@@ -218,27 +213,5 @@
 				Login</button>
 			</div>
 	</form>
-	{:else if currentView === 'welcome'}
-	<!-- Welcome Screen -->
-	<div class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6 items-center justify-between
-               bg-pink-100 border-7 border-pink-300">
-		<div class="w-full flex justify-start">
-			<button
-				type="button"
-				on:click={goToLogin}
-				class="text-pink-500 hover:text-pink-700 font-semibold text-sm"
-			>
-				← Back
-			</button>
-		</div>
-		
-		<h1 class="text-4xl font-extrabold text-center text-pink-500">
-			Welcome to PinkyPal
-		</h1>
-		
-		<p class="text-lg text-center text-gray-700 font-semibold">
-			this your friendly menstruation tracker-- let's start!
-		</p>
-	</div>
 	{/if}
 </div>
