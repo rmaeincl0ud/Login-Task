@@ -10,7 +10,7 @@
 	let showPassword = false
 	
 	// Routing state
-	let currentView: 'login' | 'signup' = 'login'
+	let currentView: 'login' | 'signup' | 'welcome' = 'login'
 	
 	// Signup form state
 	let firstName = ''
@@ -31,12 +31,17 @@
 	function goToLogin() {
 		currentView = 'login'
 	}
+	
+	function handleLogin(e: Event) {
+		e.preventDefault()
+		currentView = 'welcome'
+	}
 </script>
 
 <div class="min-h-screen flex flex-col items-center justify-center bg-pink-50">
 	{#if currentView === 'login'}
 	<!-- Login Form -->
-	<form class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
+	<form on:submit={handleLogin} class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
                bg-pink-100 border-7 border-pink-300">
 		<h1 class="text-xl font-extrabold text-center text-pink-500 font[Times New Roman]">
   					Welcome to PinkyPal</h1> 			 	
@@ -213,5 +218,19 @@
 				Login</button>
 			</div>
 	</form>
+	{:else if currentView === 'welcome'}
+	<!-- Welcome Screen -->
+	<div class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6 items-center justify-center
+               bg-pink-100 border-7 border-pink-300">
+		<h1 class="text-4xl font-extrabold text-center text-pink-500">
+			Welcome to PinkyPal
+		</h1>
+		
+		<div class="flex-1 flex items-end pb-8">
+			<p class="text-lg text-center text-gray-700 font-semibold">
+				this your friendly menstruation tracker-- let's start!
+			</p>
+		</div>
+	</div>
 	{/if}
 </div>
