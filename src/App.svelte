@@ -36,8 +36,10 @@
 <div class="min-h-screen flex flex-col items-center justify-center bg-pink-50">
 	{#if currentView === 'login'}
 	<!-- Login Form -->
-	<form class="p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
-               bg-pink-100 border-7 border-pink-300">
+	<form class="relative p-8 rounded-xl shadow-lg w-100 h-1000px flex flex-col gap-6
+               bg-pink-100 border-7 border-pink-300 overflow-hidden">
+		<!-- Ribbon -->
+		<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-16 bg-gradient-to-r from-pink-400 via-pink-300 to-pink-400 shadow-lg" style="clip-path: polygon(0 50%, 5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%);"></div>
 		<h1 class="text-xl font-extrabold text-center text-pink-500 font[Times New Roman]">
   					Welcome to PinkyPal</h1> 			 	
 		<!-- Email Field -->
@@ -84,8 +86,10 @@
 	</form>
 	{:else}
 	<!-- Signup Form -->
-	<form class="p-8 rounded-xl shadow-lg w-100 flex flex-col gap-4
-               bg-pink-100 border-7 border-pink-300">
+	<form class="relative p-8 rounded-xl shadow-lg w-100 flex flex-col gap-4
+               bg-pink-100 border-7 border-pink-300 overflow-hidden">
+		<!-- Ribbon -->
+		<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-16 bg-gradient-to-r from-pink-400 via-pink-300 to-pink-400 shadow-lg" style="clip-path: polygon(0 50%, 5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%);"></div>
 		<h1 class="text-xl font-extrabold text-center text-pink-500">
   			Create Your Account</h1>
 		
